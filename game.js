@@ -6,11 +6,13 @@ const battleSound = document.getElementById("battle-sound");
 const winSound = document.getElementById("win-sound");
 
 const tileSize = 32;
+const playerImage = new Image();
+playerImage.src = "assets/player.png";
+
 const player = {
   x: 4,
   y: 4,
-  hp: 10,
-  color: "#00F"
+  hp: 10
 };
 
 function drawPlayer() {
