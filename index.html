@@ -1,30 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Pixel RPG Game</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    canvas {
-      background: #006400;
-    }
-    #loading {
-      color: white;
-      font-family: monospace;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-    }
-  </style>
+  <title>Player Image Test</title>
 </head>
 <body>
-  <div id="game-container">
-    <div id="loading">Loading...</div>
-    <canvas id="game-canvas" width="320" height="288"></canvas>
-  </div>
-  <audio id="step-sound" src="assets/sound/step.mp3" preload="auto"></audio>
-  <audio id="battle-sound" src="assets/sound/battle.mp3" preload="auto"></audio>
-  <audio id="win-sound" src="assets/sound/win.mp3" preload="auto"></audio>
-  <script defer src="game.js"></script>
+  <canvas id="game-canvas" width="320" height="288" style="background:#333;"></canvas>
+  <script src="game.js"></script>
 </body>
 </html>
