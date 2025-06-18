@@ -32,4 +32,17 @@ document.addEventListener("keydown", (e) => {
   drawPlayer();
 });
 
+const tileImages = {
+  'G': new Image(),
+  'P': new Image(),
+  'B': new Image(),
+  'F': new Image(),
+  'C': new Image()
+};
+
+tileImages['G'].src = 'assets/tiles/grass.png';
+tileImages['P'].src = 'assets/tiles/path.png';
+tileImages['B'].src = 'assets/tiles/barn.png';
+tileImages['F'].src = 'assets/tiles/fence.png';
+tileImages['C'].src = 'assets/tiles/cow.png';
 window.onload = drawPlayer;
