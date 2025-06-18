@@ -16,7 +16,6 @@ const map = [
   ['G','G','G','G','G','G','G','G','G','G']
 ];
 
-// Tile image loading
 const tileImages = {
   'G': new Image(),
   'P': new Image(),
@@ -39,7 +38,6 @@ const tileFallbackColors = {
   'C': '#fffacd'
 };
 
-// Player image loading
 const playerImage = new Image();
 playerImage.src = 'assets/player.png';
 
@@ -49,33 +47,30 @@ const player = {
   hp: 10
 };
 
-// Map rendering
 function drawMap() {
   for (let y = 0; y < map.length; y++) {
     for (let x = 0; x < map[y].length; x++) {
       const tile = map[y][x];
       const img = tileImages[tile];
-      if (img.complete && img.naturalWidth !== 0) {
+      if (img.complete && img.naturalWidth > 0) {
         ctx.drawImage(img, x * tileSize, y * tileSize, tileSize, tileSize);
       } else {
-        ctx.fillStyle = tileFallbackColors[tile] || '#000';
+        ctx.fillStyle = tileFallbackColors[tile] || "#222";
         ctx.fillRect(x * tileSize, y * tileSize, tileSize, tileSize);
       }
     }
   }
 }
 
-// HUD
 function drawHUD() {
   ctx.fillStyle = "#FFF";
   ctx.font = "12px monospace";
   ctx.fillText(`HP: ${player.hp}`, 10, 280);
 }
 
-// Player drawing
 function drawPlayer() {
   drawMap();
-  if (playerImage.complete && playerImage.naturalWidth !== 0) {
+  if (playerImage.complete && playerImage.naturalWidth > 0) {
     ctx.drawImage(playerImage, player.x * tileSize, player.y * tileSize, tileSize, tileSize);
   } else {
     ctx.fillStyle = "#00F";
@@ -84,7 +79,6 @@ function drawPlayer() {
   drawHUD();
 }
 
-// Movement
 document.addEventListener("keydown", (e) => {
   switch (e.key) {
     case "ArrowUp": player.y = Math.max(0, player.y - 1); break;
@@ -95,12 +89,17 @@ document.addEventListener("keydown", (e) => {
   drawPlayer();
 });
 
-// Load assets before drawing
+// Wait for all images to load
 function preloadImages(images, callback) {
   let loaded = 0;
   const total = Object.keys(images).length;
   for (let key in images) {
     images[key].onload = () => {
+      loaded++;
+      if (loaded === total) callback();
+    };
+    images[key].onerror = () => {
+      console.warn("Failed to load image:", key);
       loaded++;
       if (loaded === total) callback();
     };
