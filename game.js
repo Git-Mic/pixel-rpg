@@ -25,11 +25,11 @@ const tileImages = {
   'C': new Image()
 };
 
-tileImages['G'].src = 'assets/tiles/grass.png';
-tileImages['P'].src = 'assets/tiles/path.png';
-tileImages['B'].src = 'assets/tiles/barn.png';
-tileImages['F'].src = 'assets/tiles/fence.png';
-tileImages['C'].src = 'assets/tiles/cow.png';
+tileImages['G'].src = 'assets/grass.png';
+tileImages['P'].src = 'assets/path.png';
+tileImages['B'].src = 'assets/barn.png';
+tileImages['F'].src = 'assets/fence.png';
+tileImages['C'].src = 'assets/cow.png';
 
 const tileFallbackColors = {
   'G': '#3cba54',
